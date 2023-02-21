@@ -36,22 +36,39 @@ def jogar():
     jogador_x = 'X'
     jogador_o = 'O'
 
-    def jogada_dupla(tabuleiro, jogador):
-        print(f'\nAgora é a vez do jogador {jogador}.')
-        posicao = int(input('Realize sua jogada digitando uma posição de 1 a 9: ')) - 1
-        while(posicao<0 or posicao>8 or tabuleiro[posicao] != '-'):
-            print('Jogada inválida!')
-            posicao = int(input('Realize sua jogada digitando uma posição de 1 a 9: ')) - 1
+    posicao = '-'
+
+    def validar_jogada(posicao, tabuleiro, jogador):
+        
+        while(True):
+
+            if(posicao != '1' and posicao != '2' and posicao != '3' and posicao != '4' \
+              and posicao != '5' and posicao != '6' and posicao != '7' and posicao != '8' \
+              and posicao != '9'):
+                print('Jogada inválida!')
+                posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+                continue
+
+            posicao = int(posicao) - 1
+
+            if(tabuleiro[posicao] != '-'):
+                continue
+            else:
+                break
+
         tabuleiro[posicao] = jogador
 
+    def jogada_dupla(posicao, tabuleiro, jogador):
+        print(f'\nAgora é a vez do jogador {jogador}.')
+        posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+
+        validar_jogada(posicao, tabuleiro, jogador)   
+        
     def jogada_computador(tabuleiro, jogador):
         if(jogador == jogador_x):
             print(f'\nAgora é a sua vez marcando X.')
-            posicao = int(input('Realize sua jogada digitando uma posição de 1 a 9: ')) - 1
-            while(posicao<0 or posicao>8 or tabuleiro[posicao] != '-'):
-                print('Jogada inválida!')
-                posicao = int(input('Realize sua jogada digitando uma posição de 1 a 9: ')) - 1
-            tabuleiro[posicao] = jogador
+            posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+            validar_jogada(posicao, tabuleiro, jogador)
         elif(jogador == jogador_o):
             print(f'\nComputador jogou marcando O.')
             jogada_computador = random.randint(0,8)
@@ -120,12 +137,12 @@ def jogar():
         
     elif(modo_jogo == 'D'):
         while(True):
-            jogada_dupla(tabuleiro, jogador_x)
+            jogada_dupla(posicao, tabuleiro, jogador_x)
             apresentar_tabuleiro(tabuleiro)
             if(checar_vitoria(tabuleiro, jogador_x) or checar_empate(tabuleiro)):
                 break
             
-            jogada_dupla(tabuleiro, jogador_o)
+            jogada_dupla(posicao, tabuleiro, jogador_o)
             apresentar_tabuleiro(tabuleiro)
             if(checar_vitoria(tabuleiro, jogador_o) or checar_empate(tabuleiro)):
                 break
