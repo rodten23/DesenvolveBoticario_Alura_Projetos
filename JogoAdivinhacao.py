@@ -1,4 +1,6 @@
 import random
+import JogosEmPython
+import sys
 
 def jogar():
     print('\n*********************************')
@@ -24,7 +26,7 @@ def jogar():
 
     while(dificuldade != 'F' and dificuldade != 'M' and dificuldade != 'D'):
         print('Você digitou um código de dificuldade inválido.\nPor favor, digite um código F, M ou D para iniciar o jogo.\n')
-        dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ')
+        dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ').upper()
 
     if(dificuldade == 'F'):
         tentativas_permitidas = minimo_tentativas + 4
@@ -82,7 +84,29 @@ def jogar():
 
     print('O número secreto era {}!!!\n'.format(numero_secreto))
 
-    print('Jogo encerrado! Obrigado por participar!\n')
+    print('Jogo encerrado!\n')
+
+    continuacao()
+
+def continuacao():
+    while(True):
+
+        print('\nAgora, você gostaria de:\n')
+
+        print('Jogar novamente (N)  -  Voltar para o menu (V)  -  Sair (S)\n')
+
+        continua = input('Por favor, digite N, V ou S: ').upper()
+
+        while(continua != 'N' and continua != 'V' and continua != 'S'):
+            print('Você digitou um código inválido.\n')
+            continua = input('Por favor, digite N, V ou S: ').upper()
+
+        if(continua == 'N'):
+            jogar()
+        elif(continua == 'V'):
+            JogosEmPython.acessar_menu()
+        elif(continua == 'S'):
+            sys.exit('\nObrigado por participar!')
 
 if(__name__ == '__main__'):
     jogar()

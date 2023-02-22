@@ -1,4 +1,6 @@
 import random
+import JogosEmPython
+import sys
 
 def jogar():
     print('\n*********************************')
@@ -147,7 +149,29 @@ def jogar():
             if(checar_vitoria(tabuleiro, jogador_o) or checar_empate(tabuleiro)):
                 break
         
-    print("\nJogo encerrado! Obrigado por participar!\n")
+    print('Jogo encerrado!\n')
+
+    continuacao()
+
+def continuacao():
+    while(True):
+
+        print('\nAgora, você gostaria de:\n')
+
+        print('Jogar novamente (N)  -  Voltar para o menu (V)  -  Sair (S)\n')
+
+        continua = input('Por favor, digite N, V ou S: ').upper()
+
+        while(continua != 'N' and continua != 'V' and continua != 'S'):
+            print('Você digitou um código inválido.\n')
+            continua = input('Por favor, digite N, V ou S: ').upper()
+
+        if(continua == 'N'):
+            jogar()
+        elif(continua == 'V'):
+            JogosEmPython.acessar_menu()
+        elif(continua == 'S'):
+            sys.exit('\nObrigado por participar!')
 
 if(__name__ == '__main__'):
     jogar()
