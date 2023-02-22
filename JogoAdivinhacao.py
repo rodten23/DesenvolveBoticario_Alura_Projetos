@@ -18,6 +18,8 @@ def jogar():
     numero_maximo = 100
     numero_secreto = random.randint(numero_minimo,numero_maximo)
 
+    limite_jogo = str(list(range(numero_minimo, numero_maximo + 1))).strip('[]').split(sep=', ')
+    
     pontos = 1000
 
     while(dificuldade != 'F' and dificuldade != 'M' and dificuldade != 'D'):
@@ -47,12 +49,17 @@ def jogar():
             print('Escolha bem. Essa é sua última tentativa!\n')
 
         chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo))
+        
+        while (True):
+            if (chute_str in limite_jogo):
+                break
+            else:
+                print(f'Desculpe, mas deve digitar um número entre {numero_minimo} e {numero_maximo}!\n')
+                chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo))
+                continue
+                
         chute = int(chute_str)
         print('\nVocê escolheu' , chute, '\n')
-
-        if(chute < numero_minimo or chute > numero_maximo):
-            print(f'Desculpe, mas deve digitar um número entre {numero_minimo} e {numero_maximo}!\n')
-            continue
 
         acertou = chute == numero_secreto
         maior = chute > numero_secreto
