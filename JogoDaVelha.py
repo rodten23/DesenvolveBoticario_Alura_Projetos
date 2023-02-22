@@ -24,11 +24,11 @@ def jogar():
     print('Você pode jogar em dupla ou contra o computador.\n')
     print('Dupla (D)  -  Contra Computador (C)\n')
 
-    modo_jogo = input('Por favor, digite a letra do modo escolhido: ').upper()
+    modo_jogo = input('Por favor, digite a letra do modo escolhido: ').upper().strip()
 
     while(modo_jogo != 'D' and modo_jogo != 'C'):
         print('Você digitou um modo inválido.\nPor favor, digite um código D ou C para iniciar o jogo.\n')
-        modo_jogo = input('Por favor, digite a letra do modo escolhido: ').upper()
+        modo_jogo = input('Por favor, digite a letra do modo escolhido: ').upper().strip()
 
     print('\nEstas são as posições no tabuleiro.')
 
@@ -47,7 +47,7 @@ def jogar():
               and posicao != '5' and posicao != '6' and posicao != '7' and posicao != '8' \
               and posicao != '9'):
                 print('Jogada inválida!')
-                posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+                posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ').strip()
                 continue
 
             posicao = int(posicao) - 1
@@ -61,14 +61,14 @@ def jogar():
 
     def jogada_dupla(posicao, tabuleiro, jogador):
         print(f'\nAgora é a vez do jogador {jogador}.')
-        posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+        posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ').strip()
 
         validar_jogada(posicao, tabuleiro, jogador)   
         
     def jogada_computador(tabuleiro, jogador):
         if(jogador == jogador_x):
             print(f'\nAgora é a sua vez marcando X.')
-            posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ')
+            posicao = input('Realize sua jogada digitando uma posição de 1 a 9: ').strip()
             validar_jogada(posicao, tabuleiro, jogador)
         elif(jogador == jogador_o):
             print(f'\nComputador jogou marcando O.')

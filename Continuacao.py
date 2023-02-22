@@ -8,11 +8,11 @@ def continuacao(jogar):
 
         print('Jogar novamente (N)  -  Voltar para o menu (V)  -  Sair (S)\n')
 
-        continua = input('Por favor, digite N, V ou S: ').upper()
+        continua = input('Por favor, digite N, V ou S: ').upper().strip()
 
         while(continua != 'N' and continua != 'V' and continua != 'S'):
             print('Você digitou um código inválido.\n')
-            continua = input('Por favor, digite N, V ou S: ').upper()
+            continua = input('Por favor, digite N, V ou S: ').upper().strip()
 
         if(continua == 'N'):
             jogar()

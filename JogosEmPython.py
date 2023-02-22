@@ -12,10 +12,10 @@ def acessar_menu():
     print('Os jogos disponíveis são:\n')
     print('Adivinhação (1)  -  Jogo da Velha (2)  -  Jogo da Forca (3)  -  Sair (S)\n')
 
-    jogo = input('Qual destes jogos gostaria de iniciar?: ')
+    jogo = input('Qual destes jogos gostaria de iniciar?: ').strip()
 
     while (jogo != "1" and jogo != "2" and jogo != "3" and jogo != "S" and jogo != "s"):
-        jogo = input('\nVocê digitou um código de jogo inválido.\nPor favor, digite 1, 2 ou 3 para iniciar o jogo ou S para Sair: ')
+        jogo = input('\nVocê digitou um código de jogo inválido.\nPor favor, digite 1, 2 ou 3 para iniciar o jogo ou S para Sair: ').strip()
 
     if (jogo == "1" or jogo == "2" or jogo == "3"):
         escolha = int(jogo) - 1

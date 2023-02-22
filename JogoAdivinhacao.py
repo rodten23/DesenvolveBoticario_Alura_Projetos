@@ -9,7 +9,7 @@ def jogar():
     print('Temos 3 níveis de dificuldade.\n')
     print('Fácil (F)  -  Médio (M)  -  Difícil (D)\n')
 
-    dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ').upper()
+    dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ').upper().strip()
 
     minimo_tentativas = 4
     tentativas_permitidas = 0
@@ -25,7 +25,7 @@ def jogar():
 
     while(dificuldade != 'F' and dificuldade != 'M' and dificuldade != 'D'):
         print('\nVocê digitou um código de dificuldade inválido.\nPor favor, digite um código F, M ou D para iniciar o jogo.\n')
-        dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ').upper()
+        dificuldade = input('Por favor, digite a letra da dificuldade escolhida: ').upper().strip()
 
     if(dificuldade == 'F'):
         tentativas_permitidas = minimo_tentativas + 4
@@ -49,14 +49,14 @@ def jogar():
         elif(tentativas_permitidas == 1):
             print('Escolha bem. Essa é sua última tentativa!\n')
 
-        chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo))
+        chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo)).strip()
         
         while (True):
             if (chute_str in limite_jogo):
                 break
             else:
                 print(f'Desculpe, mas deve digitar um número entre {numero_minimo} e {numero_maximo}!\n')
-                chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo))
+                chute_str = input('Digite um número entre {} e {}: '.format(numero_minimo,numero_maximo)).strip()
                 continue
                 
         chute = int(chute_str)
