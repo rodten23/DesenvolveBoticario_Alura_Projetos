@@ -22,6 +22,101 @@ def carrega_palavra_sorteada():
 def oculta_letras(palavra_sorteada):
     return ['_' for letra in palavra_sorteada]
 
+def marca_chute_correto(chute, palava_secreta, letras_acertadas):
+    index = 0
+    for letra in palava_secreta:
+        if(chute == letra):
+            letras_acertadas[index] = letra.upper()
+        index += 1
+
+def desenha_forca(erros):
+    print('  _______     ')
+    print(' |/      |    ')
+
+    if(erros == 1):
+        print(' |      (_)   ')
+        print(' |            ')
+        print(' |            ')
+        print(' |            ')
+
+    if(erros == 2):
+        print(' |      (_)   ')
+        print(' |      \     ')
+        print(' |            ')
+        print(' |            ')
+
+    if(erros == 3):
+        print(' |      (_)   ')
+        print(' |      \|    ')
+        print(' |            ')
+        print(' |            ')
+
+    if(erros == 4):
+        print(' |      (_)   ')
+        print(' |      \|/   ')
+        print(' |            ')
+        print(' |            ')
+
+    if(erros == 5):
+        print(' |      (_)   ')
+        print(' |      \|/   ')
+        print(' |       |    ')
+        print(' |            ')
+
+    if(erros == 6):
+        print(' |      (_)   ')
+        print(' |      \|/   ')
+        print(' |       |    ')
+        print(' |      /     ')
+
+    if (erros == 7):
+        print(' |      (_)   ')
+        print(' |      \|/   ')
+        print(' |       |    ')
+        print(' |      / \   ')
+
+    print(' |            ')
+    print('_|___         \n')
+
+def confirma_vitoria():
+    print('\nParabéns!!! Você ganhou!!!\n')
+
+    print('       ___________      ')
+    print('      "._==_==_=_."     ')
+    print('      .-\\:      /-.    ')
+    print('     | (|:.     |) |    ')
+    print('      "-|:.     |-"     ')
+    print('        \\::.    /      ')
+    print('         "::. ."        ')
+    print('           ) (          ')
+    print('         _.' '._        ')
+    print('        "-------"       ')
+
+    print('\n    Jogo encerrado!\n')
+
+def confirma_derrota(palavra_secreta):
+    print('\nPuxa, infelizmente você perdeu!\n')
+    print(f'A palavra secreta era {palavra_secreta}!\n')
+    
+    print('    _______________         ')
+    print('   /               \       ')
+    print('  /                 \      ')
+    print('//                   \/\  ')
+    print('\|   XXXX     XXXX   | /   ')
+    print(' |   XXXX     XXXX   |/     ')
+    print(' |   XXX       XXX   |      ')
+    print(' |                   |      ')
+    print(' \__      XXX      __/     ')
+    print('   |\     XXX     /|       ')
+    print('   | |           | |        ')
+    print('   | I I I I I I I |        ')
+    print('   |  I I I I I I  |        ')
+    print('   \_             _/       ')
+    print('     \_         _/         ')
+    print('       \_______/           ')
+
+    print('\n    Jogo encerrado!\n')
+
 def jogar():
 
     recepcao_forca()
@@ -41,27 +136,21 @@ def jogar():
         chute = input('\nQual letra? ').upper().strip()
 
         if(chute in palavra_secreta):
-            index = 0
-            for letra in palavra_secreta:
-                if(chute == letra):
-                    letras_acertadas[index] = letra.upper()
-                index += 1
+            marca_chute_correto(chute, palavra_secreta, letras_acertadas)
         else:
             erros += 1
-            print(f"Ops, você errou! Mas ainda tem {6-erros} tentativas.\n")
+            desenha_forca(erros)
+            print(f'Ops, você errou! Mas ainda tem {6-erros} tentativas.\n')
 
-        enforcou = erros == 6
+        enforcou = erros == 7
         acertou = '_' not in letras_acertadas
 
-        print(letras_acertadas)
+        print(f'\n{letras_acertadas}')
 
     if(acertou):
-        print('\nVocê ganhou!\n')
+        confirma_vitoria()
     else:
-        print('Você perdeu!\n')
-        print(f'A palavra secreta era {palavra_secreta}!\n')
-              
-    print('Jogo encerrado!')
+        confirma_derrota(palavra_secreta)
 
     Continuacao.continuacao(jogar)
 
