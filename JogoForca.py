@@ -29,6 +29,9 @@ def marca_chute_correto(chute, palava_secreta, letras_acertadas):
             letras_acertadas[index] = letra.upper()
         index += 1
 
+def pede_outra_letra(chute):
+    print(f'\nLetra {chute} já foi. Agora, escolha outra letra.')
+
 def desenha_forca(erros):
     print('  _______     ')
     print(' |/      |    ')
@@ -135,7 +138,10 @@ def jogar():
 
         chute = input('\nQual letra? ').upper().strip()
 
-        if(chute in palavra_secreta):
+        if(chute in letras_acertadas):
+            pede_outra_letra(chute)
+            continue
+        elif(chute in palavra_secreta):
             marca_chute_correto(chute, palavra_secreta, letras_acertadas)
         else:
             erros += 1
