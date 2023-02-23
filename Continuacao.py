@@ -19,4 +19,4 @@ def continuacao(jogar):
         elif(continua == 'V'):
             JogosEmPython.acessar_menu()
         elif(continua == 'S'):
-            sys.exit('\nObrigado por participar!')
+            sys.exit('\nObrigado por participar!\n')

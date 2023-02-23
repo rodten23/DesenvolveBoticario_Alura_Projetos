@@ -2,11 +2,22 @@ import Continuacao
 import random
 
 def jogar():
+
     print('\n*********************************')
     print('***Bem vindo ao Jogo da Forca!***')
     print('*********************************\n')
 
-    palavra_secreta = 'cocada'.upper()
+    palavras = []
+
+    with open('Palavras.txt', 'r') as arquivo:
+        for linha in arquivo:
+            palavras.append(linha.strip())
+
+    palavra_secreta = palavras[random.randint(0,len(palavras))].upper()
+
+    print(palavra_secreta)
+    print(type(palavra_secreta))
+    print(len(palavra_secreta))
 
     letras_acertadas = ['_' for letra in palavra_secreta]
 
@@ -14,7 +25,6 @@ def jogar():
 
     enforcou = False
     acertou = False
-
     erros = 0
 
     while(not enforcou and not acertou):
@@ -24,7 +34,7 @@ def jogar():
         if(chute in palavra_secreta):
             index = 0
             for letra in palavra_secreta:
-                if(chute.upper() == letra.upper()):
+                if(chute == letra):
                     letras_acertadas[index] = letra.upper()
                 index += 1
         else:
