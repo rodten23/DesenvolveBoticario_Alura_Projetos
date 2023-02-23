@@ -1,11 +1,13 @@
 import Continuacao
 import random
 
-def jogar():
+def recepcao_forca():
 
     print('\n*********************************')
     print('***Bem vindo ao Jogo da Forca!***')
     print('*********************************\n')
+
+def carrega_palavra_sorteada():
 
     palavras = []
 
@@ -13,13 +15,20 @@ def jogar():
         for linha in arquivo:
             palavras.append(linha.strip())
 
-    palavra_secreta = palavras[random.randint(0,len(palavras))].upper()
+    palavra_sorteada = palavras[random.randint(0,len(palavras))].upper()
 
-    print(palavra_secreta)
-    print(type(palavra_secreta))
-    print(len(palavra_secreta))
+    return palavra_sorteada
 
-    letras_acertadas = ['_' for letra in palavra_secreta]
+def oculta_letras(palavra_sorteada):
+    return ['_' for letra in palavra_sorteada]
+
+def jogar():
+
+    recepcao_forca()
+
+    palavra_secreta = carrega_palavra_sorteada()
+
+    letras_acertadas = oculta_letras(palavra_secreta)
 
     print(letras_acertadas)
 
@@ -39,7 +48,7 @@ def jogar():
                 index += 1
         else:
             erros += 1
-            print(f"Ops, você errou! Mas ainda tem {6-erros} tentativas.")
+            print(f"Ops, você errou! Mas ainda tem {6-erros} tentativas.\n")
 
         enforcou = erros == 6
         acertou = '_' not in letras_acertadas
@@ -47,11 +56,12 @@ def jogar():
         print(letras_acertadas)
 
     if(acertou):
-        print('Você ganhou!')
+        print('\nVocê ganhou!\n')
     else:
-        print('Você perdeu!')
+        print('Você perdeu!\n')
+        print(f'A palavra secreta era {palavra_secreta}!\n')
               
-    print('Jogo encerrado!\n')
+    print('Jogo encerrado!')
 
     Continuacao.continuacao(jogar)
 
