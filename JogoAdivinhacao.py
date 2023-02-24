@@ -1,10 +1,10 @@
+import Abertura
 import Continuacao
 import random
 
 def jogar():
-    print('\n*********************************')
-    print('Bem vindo ao Jogo de Adivinhação!')
-    print('*********************************\n')
+    
+    Abertura.aber_jogo_adivinhacao()
 
     print('Temos 3 níveis de dificuldade.\n')
     print('Fácil (F)  -  Médio (M)  -  Difícil (D)\n')

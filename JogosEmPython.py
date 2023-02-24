@@ -1,3 +1,4 @@
+import Abertura
 import JogoAdivinhacao
 import JogoDaVelha
 import JogoForca
@@ -5,10 +6,8 @@ import sys
 
 def acessar_menu():
 
-    print('\n********* JOGOS * PYTHON *********')
-    print('******** Sejam Bem Vindos ********')
-    print('***** Que a diversão comece! *****\n')
-
+    Abertura.aber_jogo_python()
+    
     print('Os jogos disponíveis são:\n')
     print('Adivinhação (1)  -  Jogo da Velha (2)  -  Jogo da Forca (3)  -  Sair (S)\n')
 

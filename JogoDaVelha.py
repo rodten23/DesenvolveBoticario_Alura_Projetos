@@ -1,10 +1,10 @@
+import Abertura
 import Continuacao
 import random
 
 def jogar():
-    print('\n*********************************')
-    print('***Bem vindo ao Jogo da Velha!***')
-    print('*********************************\n')
+    
+    Abertura.aber_jogo_velha()
 
     posicoes = ['1','2','3',
                 '4','5','6',

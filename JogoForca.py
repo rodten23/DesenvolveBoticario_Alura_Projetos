@@ -1,11 +1,6 @@
+import Abertura
 import Continuacao
 import random
-
-def recepcao_forca():
-
-    print('\n*********************************')
-    print('***Bem vindo ao Jogo da Forca!***')
-    print('*********************************\n')
 
 def carrega_palavra_sorteada():
 
@@ -122,7 +117,7 @@ def confirma_derrota(palavra_secreta):
 
 def jogar():
 
-    recepcao_forca()
+    Abertura.aber_jogo_forca()
 
     palavra_secreta = carrega_palavra_sorteada()
 
